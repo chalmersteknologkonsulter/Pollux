@@ -19,10 +19,11 @@ print(cmd2)
 run_cmd2 = os.system(cmd2)
 #print(run_cmd2)
 
-cmd3 = "cd " + app_name
-print(cmd3)
-run_cmd3 = os.system(cmd3)
-#print(run_cmd3)
+run_cmd3 = os.chdir(app_name)
+# varify the path using getcwd() 
+cwd = os.getcwd() 
+# print the current directory 
+print("Current working directory is:", cwd)
 
 cmd4 = "npm install"
 print(cmd4)
@@ -35,7 +36,7 @@ run_cmd4 = os.system(cmd4)
 #2. MacOS/Linux
 #""")
 # pr windows faaire pr MacOs/linux
-cmd5 = "set DEBUG=" + app_name + ":* & npm start"
+cmd5 = "SET DEBUG=" + app_name + ":* & npm start"
 print(cmd5)
 run_cmd5 = os.system(cmd5)
 #print(run_cmd5)
