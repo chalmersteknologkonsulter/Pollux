@@ -1,4 +1,5 @@
 import os
+import platform
 
 #install the application generator as a global npm package 
 cmd1 = "sudo npm install -g express-generator"
@@ -36,7 +37,13 @@ run_cmd4 = os.system(cmd4)
 #2. MacOS/Linux
 #""")
 # pr windows faaire pr MacOs/linux
-cmd5 = "SET DEBUG=" + app_name + ":* & npm start"
+os_type = platform.system()
+print(os_type)
+if (os_type == "Linux" or os_type == "Darwin"):
+  cmd5 = "DEBUG=" + app_name + ":* npm start"
+elif (os_type == "Windows"):
+  cmd5 = "SET DEBUG=" + app_name + ":* & npm start"
+
 print(cmd5)
 run_cmd5 = os.system(cmd5)
 #print(run_cmd5)
