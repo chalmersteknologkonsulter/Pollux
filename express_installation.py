@@ -1,13 +1,26 @@
 import os
 import platform
 
-install_express = input("Would like to build an express server? Yes/No ")
+install_express = input("Would like to build an express server? yes/no ")
 
-if (install_express == "No"):
+if (install_express == "no"):
   exit
 else:
+  os_type = platform.system()
+  print(os_type)
+
+  # install node
+  npm_installed = input("Do you have npm installed on your computer? yes/no ") 
+  if (npm_installed == "no"):
+    if (os_type == "Linux" or os_type == "Darwin"):
+      cmd0 = "sudo apt-get install node"
+    elif (os_type == "Darwin"):
+      cmd0 = "brew install node"
+    elif (os_type == "Windows"):
+      print("Download node.js via : https://nodejs.org/en/download/")
+    run_cmd0 = os.sytem(cmd0)
+
   #install the application generator as a global npm package 
-  # attention faut avoir npm installed on your computer
   cmd1 = "sudo npm install -g express-generator"
   print(cmd1)
   run_cmd1 = os.system(cmd1)
@@ -32,8 +45,6 @@ else:
   print(cmd4)
   run_cmd4 = os.system(cmd4)
 
-  os_type = platform.system()
-  print(os_type)
   if (os_type == "Linux" or os_type == "Darwin"):
     cmd5 = "DEBUG=" + app_name + ":* npm start"
   elif (os_type == "Windows"):
