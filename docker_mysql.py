@@ -1,4 +1,5 @@
 import os
+import platform
 
 operSys = input("\n Do you have docker installed on your machine? \n - y \n - n \n")
 
