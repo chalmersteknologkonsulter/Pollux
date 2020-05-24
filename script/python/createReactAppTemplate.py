@@ -28,7 +28,7 @@ if systemPlatform == "Linux":
 	#TODO: run server
 		#+" && cd " + applicationName + " && npm start")
 
-	print("Thank you, your " + applicationName + " application template is now prepared!")
+	print("\n\nThank you for your patience, your " + applicationName + " application template is now prepared!")
 
 
 elif systemPlatform == "Windows":
@@ -62,5 +62,34 @@ elif systemPlatform == "Windows":
 	# Install necessary components, create folder template
 	os.system("npx create-react-app " + applicationName )
 
+	print("Thank you for your patience, your " + applicationName + " application template is now prepared!")
+
+
 elif systemPlatform == "Darwin":
-	exit("OSX is not yet supported")
+
+	# Confirm if we should partake in this section of the instalation
+	print("Would you like to setup a React application template? (Y/n): ")
+	confirmation = raw_input()
+	if (confirmation == "n") or (confirmation == "N"):
+		exit("Skipping")
+
+	# Confirm that we are running as root
+	if os.geteuid() == 0:
+	    exit("You must NOT have root privileges when running this script.\nPlease try again, this time WITHOUT using 'sudo'. Exiting.")
+
+	# Get the name of the application and convert to lower case (React does not allow upper case characters)
+	print("What is the name of the application template?: ")
+	applicationName = raw_input().lower()
+
+	# Install Homebrew, incase it is missing
+	os.system("/bin/bash -c \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)\"")
+
+	# Install Node.js and NPM
+	os.system("brew update")
+	os.system("brew install node")
+
+	# Install necessary components, create folder template
+	os.system("npx create-react-app " + applicationName )
+	#TODO: run server
+
+	print("\n\nThank you for your patience, your " + applicationName + " application template is now prepared!")
