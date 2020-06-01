@@ -20,7 +20,8 @@ cmd = os.chdir("lorem-ipsum-demo")
 
 # important step cause Heroka relies on Git
 # initialise a new Git repositery
-cmd = "git init"
+git_repo = input("What is the url of your github repository?")
+cmd = "git clone " + git_repo
 os.system(cmd)
 cmd = "echo \"Edit me later\" > README.md"
 os.system(cmd)
@@ -44,18 +45,19 @@ cmd = "npm install express --save"
 os.system(cmd)
 
 # create a file called app.js, which runs an Express server locally
-cmd = "touch app.js"
-os.system(cmd) 
+#cmd = "touch app.js"
+""" os.system(cmd) 
 # This file will be the entry point for the app when it is ready. 
 cmd = "cat appTemplate.js >> app.js"
-os.system(cmd)
+os.system(cmd) """
 
-# write code in app.js ?? -> to do 
+app_name = input("What is the name of your express app?")
+
 
 #save the app and start the server with :
 launch = input("Do you want to lauch the app? y/n")
 if (launch == "y"): 
-   cmd = "node app.js"
+   cmd = "node " + app_name
    os.system(cmd)
    print("Visit the localhost:3000 in your browser")
 
@@ -74,7 +76,7 @@ os.system(cmd)
 deploy = input("Do you want to deploy your app? y/n")
 if (deploy == "y"):
     # Create a Procfile (Heroka need a Procfile to know how to run your app)
-    cmd = "echo \"web: node app.js \" > Procfile"
+    cmd = "echo \"web: node " +app_name+ " \" > Procfile"
     os.system(cmd)
     cmd = "git add"
     os.system(cmd)
@@ -83,5 +85,3 @@ if (deploy == "y"):
     # push to your Heroku master branch
     cmd ="git push heroku master"
     os.system(cmd)
-
-

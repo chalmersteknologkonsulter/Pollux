@@ -41,6 +41,10 @@ else:
   # print the current directory 
   print("Current working directory is:", cwd)
 
+  cmd = "cat appTemplate.js >> " + app_name
+  print(cmd)
+  os.system(cmd) 
+  
   cmd4 = "npm install"
   print(cmd4)
   run_cmd4 = os.system(cmd4)
