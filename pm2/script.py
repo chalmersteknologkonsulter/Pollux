@@ -4,4 +4,6 @@ os.system("sudo apt update")
 os.system("sudo apt install nodejs")
 os.system("sudo apt install npm")
 os.system("sudo npm i -g pm2")
-print("\nTo start your express app, go to your app directory and type: \"sudo pm2 start FILE_NAME.js\"\n")
+
+file_path = raw_put("Please enter your app.js file path")
+os.system("sudo pm2 start" + file_path + "\\app.js")
