@@ -53,8 +53,3 @@ mycursor.execute("UPDATE " + dbName + "postmeta SET meta_value = replace(meta_va
 
 mydb.close()
 
-# $SQL_COMMAND "UPDATE $DB_NAMEoptions SET option_value = replace(option_value, '$OLD_URL', 'http://$HOST') WHERE option_name = 'home' OR option_name = 'siteurl';"
-# $SQL_COMMAND "UPDATE $DB_NAMEposts SET guid = replace(guid, '$OLD_URL','http://$HOST');"
-# $SQL_COMMAND "UPDATE $DB_NAMEposts SET post_content = replace(post_content, '$OLD_URL', 'http://$HOST');"
-# $SQL_COMMAND "UPDATE $DB_NAMEpostmeta SET meta_value = replace(meta_value,'$OLD_URL','http://$HOST');"
-
