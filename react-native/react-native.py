@@ -1,5 +1,6 @@
 import os
 import functions as f
+import platform
 
 install = raw_input("\nDo you want install React Native? (Y for Yes, N for No)\n")
 

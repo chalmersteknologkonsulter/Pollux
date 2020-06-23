@@ -24,6 +24,9 @@ def react(project_name, dev_platform_name):
         "echo echo -e $STRING >> \"$HOME/.bash_profile\" && " +
         "source $HOME/.bash_profile")
     elif (platform.system() == "Darwin"):
+        #install Homebrew
+        os.system("/bin/bash -c \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)\"")
+
         os.system("brew install yarn")
         os.system("brew install node")
         os.system("brew install watchman")
