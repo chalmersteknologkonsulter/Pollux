@@ -15,17 +15,28 @@ if (install == "Y"):
     project_name = raw_input("Poject name: ")
     print("")
 
-    # update package then install node and npm
-    os.system("sudo apt update")
-    os.system("sudo apt install nodejs")
-    os.system("sudo apt install npm")
-    print("")
+    if (platform.system() == "Linux"):
+        # update package then install node and npm
+        os.system("sudo apt update")
+        os.system("sudo apt install nodejs")
+        os.system("sudo apt install npm")
+        print("")
 
     if (cli_type == "E"):
         f.expo(project_name)
     else:
-        installed = raw_input("To use React CLI, you need to install Android Studio. \nIs it already installed (Y for yes, N for no)? ")
+        dev_platform_name = "Android Studio"
+        download_source = "https://developer.android.com/studio"
+
+        if (platform.system() == "Darwin"):
+            dev_platform = raw_input("Do you want to React Native for iOS or Android? (I for iOS, A for Android): ")
+            if (dev_platform == "I"):
+                dev_platform_name = "Xcode"
+                download_source = "https://apps.apple.com/us/app/xcode/id497799835?mt=12"
+            
+        installed = raw_input("To use React CLI, you need to install " + dev_platform_name + ". \nIs it already installed (Y for yes, N for no)? ")
+
         if (installed == "Y"):
-            f.react(project_name)
+            f.react(project_name, dev_platform_name)
         else:
-            print("\nYou can download from https://developer.android.com/studio\n")
+            print("\nYou can download from " + download_source + "\n")
