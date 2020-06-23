@@ -18,12 +18,11 @@ else:
   npm_installed = input("Do you have npm installed on your computer? yes/no ") 
   if (npm_installed == "no"):
     if (os_type == "Linux" or os_type == "Darwin"):
-      cmd0 = "sudo apt-get install node"
+      os.system("sudo apt-get install node")
     elif (os_type == "Darwin"):
-      cmd0 = "brew install node"
+      os.system("brew install node")
     elif (os_type == "Windows"):
       print("Download node.js via : https://nodejs.org/en/download/")
-    run_cmd0 = os.sytem(cmd0)
 
   #install the application generator as a global npm package 
   cmd1 = "sudo npm install -g express-generator"
