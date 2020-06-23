@@ -3,7 +3,7 @@ import platform
 
 
 def nextScript():
-    nextScript = "python3 react-native.py"
+    nextScript = "python react-native.py"
     run_nextScript = os.system(nextScript)
 
 

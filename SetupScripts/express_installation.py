@@ -49,6 +49,10 @@ else:
   cmd4 = "npm install"
   print(cmd4)
   run_cmd4 = os.system(cmd4)
+  
+  error = input("Is there vulnerability found? yes/no ")
+  if (error == "yes"):
+    os.system("npm audit fix --force")
 
   if (os_type == "Linux" or os_type == "Darwin"):
     cmd5 = "DEBUG=" + app_name + ":* npm start"
