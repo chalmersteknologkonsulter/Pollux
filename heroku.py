@@ -13,17 +13,14 @@ print(os_type)
 if (os_type == "Windows"):
     exit
 
-# create a new project directory and move into it 
-cmd = "mkdir lorem-ipsum-demo"
+# move into your project directory
+project_name = input("What is the name of your project directory? ")
+cmd = "mkdir " + project_name
 os.system(cmd)
-cmd = os.chdir("lorem-ipsum-demo")
+os.chdir(project_name)
 
-# important step cause Heroka relies on Git
-# initialise a new Git repositery
-git_repo = input("What is the url of your github repository?")
+git_repo = input("What is the url of your github repository? ")
 cmd = "git clone " + git_repo
-os.system(cmd)
-cmd = "echo \"Edit me later\" > README.md"
 os.system(cmd)
 
 # you need to have a free Heroku account to do this
@@ -32,7 +29,8 @@ cmd = "heroku login -i"
 os.system(cmd)
 
 #  you can create a new Heroku project
-cmd = "heroku create lorem-ipsum-demo"
+heroku_project = input("What is the name of your new Heroku project? ")
+cmd = "heroku create " + heroku_project
 os.system(cmd)
 
 # initialise a new npm project by creating a package.json file
@@ -44,15 +42,7 @@ os.system(cmd)
 cmd = "npm install express --save"
 os.system(cmd)
 
-# create a file called app.js, which runs an Express server locally
-#cmd = "touch app.js"
-""" os.system(cmd) 
-# This file will be the entry point for the app when it is ready. 
-cmd = "cat appTemplate.js >> app.js"
-os.system(cmd) """
-
 app_name = input("What is the name of your express app?")
-
 
 #save the app and start the server with :
 launch = input("Do you want to lauch the app? y/n")
