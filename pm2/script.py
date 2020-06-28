@@ -5,5 +5,5 @@ os.system("sudo apt install nodejs")
 os.system("sudo apt install npm")
 os.system("sudo npm i -g pm2")
 
-file_path = raw_put("Please enter your startup file path")
+file_path = input("\nPlease enter the path to your startup file: ")
 os.system("sudo pm2 start " + file_path)
