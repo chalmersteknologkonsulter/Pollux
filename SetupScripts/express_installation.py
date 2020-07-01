@@ -15,16 +15,17 @@ else:
   print(os_type)
 
   # install node
-  npm_installed = input("Do you have npm installed on your computer? yes/no ") 
+  npm_installed = input("Do you have npm installed on your computer? yes/no ")
   if (npm_installed == "no"):
     if (os_type == "Linux" or os_type == "Darwin"):
-      os.system("sudo apt-get install node")
+      cmd0 = "sudo apt-get install node"
     elif (os_type == "Darwin"):
-      os.system("brew install node")
+      cmd0 = "brew install node"
     elif (os_type == "Windows"):
       print("Download node.js via : https://nodejs.org/en/download/")
+    run_cmd0 = os.sytem(cmd0)
 
-  #install the application generator as a global npm package 
+  #install the application generator as a global npm package
   cmd1 = "sudo npm install -g express-generator"
   print(cmd1)
   run_cmd1 = os.system(cmd1)
@@ -40,18 +41,18 @@ else:
   run_cmd2 = os.system(cmd2)
 
   run_cmd3 = os.chdir(app_name)
-  # varify the path using getcwd() 
-  cwd = os.getcwd() 
-  # print the current directory 
+  # varify the path using getcwd()
+  cwd = os.getcwd()
+  # print the current directory
   print("Current working directory is:", cwd)
+
+  cmd = "cat appTemplate.js >> " + app_name
+  print(cmd)
+  os.system(cmd)
 
   cmd4 = "npm install"
   print(cmd4)
   run_cmd4 = os.system(cmd4)
-  
-  error = input("Is there vulnerability found? yes/no ")
-  if (error == "yes"):
-    os.system("npm audit fix --force")
 
   if (os_type == "Linux" or os_type == "Darwin"):
     cmd5 = "DEBUG=" + app_name + ":* npm start"
@@ -61,4 +62,3 @@ else:
   print(cmd5)
   run_cmd5 = os.system(cmd5)
   nextScript()
-  
