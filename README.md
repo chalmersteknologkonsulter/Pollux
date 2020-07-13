@@ -7,7 +7,7 @@ You have two pages, one dedicated to the set-up scripts and the other for deploy
 ### Requirements:
 - Python3 
 
-## RULES:
+## RULES
 - As a user of these scripts, you are responsible for maintainig any issues that you might encounter while using the scripts.
 - Outdated commands need to be maintained over time. 
 - If you are unable to fix the issues, please report them to the IT management team.
