@@ -13,6 +13,7 @@ print(os_type)
 if (os_type == "Windows"):
     exit
 
+
 # move into your project directory
 project_name = input("What is the name of your project directory? ")
 cmd = "mkdir " + project_name
