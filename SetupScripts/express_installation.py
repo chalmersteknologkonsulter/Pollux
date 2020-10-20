@@ -1,15 +1,11 @@
 import os
 import platform
 
-def nextScript():
-    nextScript = "python3 createReactAppTemplate.py"
-    run_nextScript = os.system(nextScript)
-
-
 install_express = input("Would like to build an express server? yes/no ")
 
 if (install_express == "no"):
-  nextScript()
+  print("Bye!")
+  exit()
 else:
   os_type = platform.system()
   print(os_type)
@@ -17,13 +13,13 @@ else:
   # install node
   npm_installed = input("Do you have npm installed on your computer? yes/no ")
   if (npm_installed == "no"):
-    if (os_type == "Linux" or os_type == "Darwin"):
+    if (os_type == "Linux" or os_type == "Darwin"): 
       cmd0 = "sudo apt-get install node"
     elif (os_type == "Darwin"):
       cmd0 = "brew install node"
     elif (os_type == "Windows"):
       print("Download node.js via : https://nodejs.org/en/download/")
-    run_cmd0 = os.sytem(cmd0)
+      run_cmd0 = os.system(cmd0)
 
   #install the application generator as a global npm package
   cmd1 = "sudo npm install -g express-generator"
@@ -61,4 +57,3 @@ else:
 
   print(cmd5)
   run_cmd5 = os.system(cmd5)
-  nextScript()
