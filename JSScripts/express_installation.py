@@ -1,9 +1,9 @@
 import os
 import platform
 
-install_express = input("Would like to build an express server? yes/no ")
+install_express = input("Would like to build an express server? Y/n ")
 
-if (install_express == "no"):
+if (install_express == "n" or install_express == "N"):
   print("Bye!")
   exit()
 else:
@@ -11,30 +11,27 @@ else:
   print(os_type)
 
   # install node
-  npm_installed = input("Do you have npm installed on your computer? yes/no ")
-  if (npm_installed == "no"):
+
+  ################ UNIX  ###################
+  npm_installed = input("Do you have npm installed on your computer? Y/n ")
+  if (npm_installed == "n" or npm_installed == "N"):
     if (os_type == "Linux" or os_type == "Darwin"): 
-      cmd0 = "sudo apt-get install node"
+      os.system("sudo apt-get install node")
     elif (os_type == "Darwin"):
-      cmd0 = "brew install node"
+      os.system("brew install node")
+
+
+  ################ Windows  ###################
+
     elif (os_type == "Windows"):
-      print("Download node.js via : https://nodejs.org/en/download/")
-      run_cmd0 = os.system(cmd0)
+      os.system("Download node.js via : https://nodejs.org/en/download/")
+      
 
   #install the application generator as a global npm package
-  cmd1 = "sudo npm install -g express-generator"
-  print(cmd1)
-  run_cmd1 = os.system(cmd1)
+  os.system("sudo npm install -g express-generator")
 
-  #launch the application generator
-  #os.system("express")
-  #trial2 = os.system("express -h")
-
-  app_name = input("What is the name of your app?")
-
-  cmd2 = "express --view=pug " + app_name
-  print(cmd2)
-  run_cmd2 = os.system(cmd2)
+  app_name = input(" Create a name for your app: ")
+  os.system("express --view=pug " + app_name)
 
   run_cmd3 = os.chdir(app_name)
   # varify the path using getcwd()
