@@ -1,0 +1,10 @@
+{
+    "apps" : [
+      {
+        "name"      : "fastex-web",
+        "script"    : "npx",
+        "interpreter": "none",
+        "args": "serve -p 5000 -s build"
+      }
+    ]
+}

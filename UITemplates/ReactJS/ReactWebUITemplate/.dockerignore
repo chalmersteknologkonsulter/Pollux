@@ -1,0 +1,9 @@
+node_modules
+<<<<<<< HEAD
+build
+.dockerignore
+Dockerfile
+Dockerfile.prod
+=======
+npm-debug.log
+>>>>>>> d0e7380bd0c0484d5510fc6bcf1c3b6c8bed5d27
