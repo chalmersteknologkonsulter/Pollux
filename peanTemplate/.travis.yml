@@ -1,0 +1,56 @@
+language: node_js
+node_js:
+  - "7"
+sudo: enabled
+
+services:
+  - docker
+
+addons:
+  sonarcloud:
+    organization: "ctk"
+    token:
+      secure: $sonar
+    github_token:
+      secure: $github
+
+cache:
+  directories:
+    - "frontend/node_modules"
+    - "backend/node_modules"
+    - '$HOME/.sonar/cache'
+
+script: echo "Starting build with $(node -v) ..."
+jobs:
+  include:
+
+    - stage: SonarQube
+      script:
+        - sonar-scanner
+
+    - stage: Backend
+      script:
+        - echo "Setting up docker PostGres container"
+        - cd backend/db
+        - make append
+
+        - sudo fuser -n tcp -k 5432
+        - make container
+
+        - echo "Install API server"
+        - cd ..
+        - npm -g install npm@latest
+        - npm install
+        - echo "Start API server"
+        - npm start &
+        - echo "Run tests on API server"
+        - npm run testproduction
+
+    - stage: Frontend
+      script:
+        - cd frontend
+        - npm install
+        - npm install -g @angular/cli
+        - ng build --env=prod
+        - ng serve &
+        - ng test --watch=false

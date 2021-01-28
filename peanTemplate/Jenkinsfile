@@ -1,0 +1,35 @@
+pipeline {
+  agent any
+  stages {
+    stage('Installation') {
+      parallel {
+        stage('Backend') {
+          steps {
+            sh '''cd backend && sudo npm install'''
+          }
+        }
+        stage('Frontend') {
+          steps {
+            sh '''cd frontend && sudo npm install'''
+          }
+        }
+      }
+    }
+    stage('Deploy') {
+      parallel {
+        stage('Backend') {
+          steps {
+            sh '''cd backend '''
+            sh '''sudo nohup npm start --port 4201 &'''
+          }
+        }
+        stage('Frontend') {
+          steps {
+            sh '''cd frontend '''
+            sh '''ng serve --port=4202 --host 0.0.0.0 --disable-host-check &'''
+          }
+        }
+      }
+    }
+  }
+}
