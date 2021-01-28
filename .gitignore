@@ -40,3 +40,4 @@ bin-release/
 # information for Eclipse / Flash Builder.
 SetupScripts/__pycache__/*
 react-native/__pycache__/functions.cpython-37.py
+node_modules/
